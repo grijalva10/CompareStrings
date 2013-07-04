@@ -8,12 +8,23 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CompareStrings/JMGAppDelegate.m"
-         timestampString = "383682790.222678"
+         timestampString = "394478510.855469"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "20"
-         endingLineNumber = "20"
-         landmarkName = "arrayController"
+         endingLineNumber = "20">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "CompareStrings/JMGAppDelegate.m"
+         timestampString = "394478510.855469"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "27"
+         endingLineNumber = "27"
+         landmarkName = "optionSegment"
          landmarkType = "19">
       </FileBreakpoint>
       <FileBreakpoint
@@ -21,24 +32,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CompareStrings/JMGAppDelegate.m"
-         timestampString = "383682790.222678"
+         timestampString = "394519419.785234"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "33"
-         endingLineNumber = "33"
-         landmarkName = "-applicationDidFinishLaunching:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "CompareStrings/JMGAppDelegate.m"
-         timestampString = "383682790.222678"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "90"
-         endingLineNumber = "90"
+         startingLineNumber = "85"
+         endingLineNumber = "85"
          landmarkName = "-goButton:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -47,13 +45,65 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CompareStrings/JMGAppDelegate.m"
-         timestampString = "383682790.222678"
+         timestampString = "394478510.855469"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "25"
          endingLineNumber = "25"
-         landmarkName = "@implementation JMGAppDelegate"
+         landmarkName = "arrayController"
+         landmarkType = "19">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "CompareStrings/JMGAppDelegate.m"
+         timestampString = "394519419.785234"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "163"
+         endingLineNumber = "163"
+         landmarkName = "-parseButton:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "CompareStrings/JMGAppDelegate.m"
+         timestampString = "394519419.785234"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "157"
+         endingLineNumber = "157"
+         landmarkName = "-parseButton:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../Spyder.m"
+         timestampString = "394479993.705562"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "59"
+         endingLineNumber = "59"
+         landmarkName = "@implementation Spyder"
          landmarkType = "3">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "CompareStrings/JMGRegexViewWindowController.m"
+         timestampString = "394568834.981733"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "131"
+         endingLineNumber = "131"
+         landmarkName = "-pasteRegex:"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

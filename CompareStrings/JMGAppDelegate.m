@@ -8,10 +8,15 @@
 #import <Foundation/Foundation.h>
 
 #import "JMGAppDelegate.h"
-#import "JMGCountedSetAdditions.h"
 #import "TFHpple.h"
 #import "Product.h"
-#import "TFHppleElement.h"
+#import "URLSearcher.h"
+
+@interface JMGAppDelegate () {
+    NSMutableArray *_objects;
+    NSMutableArray *pageContent;
+}
+@end
 
 @implementation JMGAppDelegate 
 
@@ -22,12 +27,6 @@
 @synthesize optionSegment;
 @synthesize URLTextField;
 @synthesize XMLTextField;
-
-@end
-
-@interface JMGAppDelegate (){
-    NSMutableArray *_objects;
-}
 
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -42,8 +41,11 @@
    
     menuItems = [menuDic allValues];
    [arrayController setContent:menuItems];
-    NSLog(@"%@",arrayController);
-
+    
+  
+    
+        //NSLog(@"%@",arrayController);
+        // [self start];
 
 }
 
@@ -100,54 +102,142 @@
 
 - (IBAction)parseButton:(NSButton *)sender {
     
+    
+        //NSMutableArray *products = [[NSMutableArray init]alloc];
         //1
     NSString *websiteString = [URLTextField stringValue];
     NSURL *websiteLink = [NSURL URLWithString:websiteString];
-    NSString *XMLValue = [XMLTextField stringValue];
+    
+    
+    NSString *productName = @"//*[@id='pdpMain']/div[1]/div[1]/div[1]/div[1]/h1";
+    NSString *price = @"//*[@id='pdpATCDivpdpMain']/div[2]/div/div[1]";
+    NSString *style = @"//*[@id='pdpTab1']/p[2]/b";
+    NSString *image = @"//*[@id='pdpMain']/div[1]/div[2]/div[2]/img";
+    
     NSData *htmlData = [NSData dataWithContentsOfURL:websiteLink];
     
         //2
     TFHpple *htmlParser = [TFHpple hppleWithHTMLData:htmlData];
     
         //3
-    NSArray *htmlNodes = [htmlParser searchWithXPathQuery:XMLValue];
+    NSArray *nameNode = [htmlParser searchWithXPathQuery:productName];
+    NSArray *priceNode = [htmlParser searchWithXPathQuery:price];
+    NSArray *styleNode = [htmlParser searchWithXPathQuery:style];
+    NSArray *imageNode = [htmlParser searchWithXPathQuery:image];
     
         //4
-      NSMutableArray *newData = [[NSMutableArray alloc] initWithCapacity:0];
+        //NSMutableArray *newData = [[NSMutableArray alloc] initWithCapacity:0];
     
-    for (TFHppleElement *element in htmlNodes) {
+    for (TFHppleElement *element in nameNode) {
             //5
-        Product *productTitle = [[Product alloc] init];
+       
+        NSString *name = [element text];
         
-            //6
-        productTitle.title = [element content];
+        NSLog(@"%@",name);
+       
     }
     
-    for (TFHppleElement *element in htmlNodes){
+    for (TFHppleElement *element in priceNode){
         
-        Product *productURL = [[Product alloc] init];
-        
-        productURL.url = [element content];
+        NSString *price = [[[[element text]componentsSeparatedByCharactersInSet:
+                           [NSCharacterSet whitespaceAndNewlineCharacterSet]]componentsJoinedByString:@""]stringByReplacingOccurrencesOfString:@"$" withString:@""];
+    
+        NSLog(@"%@",price);
         
     }
     
-    for (TFHppleElement *element in htmlNodes){
+    for (TFHppleElement *element in styleNode){
         
-        Product *productStyle = [[Product alloc] init];
-            //7
-        productStyle.style = [element content];
+        NSString *style = [[[[element text]componentsSeparatedByCharactersInSet:
+                           [NSCharacterSet whitespaceAndNewlineCharacterSet]]componentsJoinedByString:@""]stringByReplacingOccurrencesOfString:@"Style(s):" withString:@""];
+        
+        NSLog(@"%@",style);
+        
     }
     
-        for (TFHppleElement *element in htmlNodes){
-            
-            Product *productImg = [[Product alloc] init];
+        for (TFHppleElement *element in imageNode){
         
-            productImg.Img = [element content];
+            NSString *image = [element objectForKey:@"src"];
+            NSLog(@"%@",image);
         
 
         }
     
+        //_objects = newData;
+    
     
    }
 
+- (IBAction)getLinks:(NSButton *)sender
+{
+    
+    NSString *danPost = @"http://www.bootbarn.com/null/root,default,sc.html?prefn1=brand&prefv1=Dan%20Post&start=0&sz=60";
+    NSString *laredo = @"http://www.bootbarn.com/null/root,default,sc.html?prefn1=brand&prefv1=Laredo&sz";
+    NSString *johnDeere = @"http://www.bootbarn.com/null/root,default,sc.html?prefn1=brand&prefv1=John%20Deere&start=0&sz=60";
+    NSString *durango = @"http://www.bootbarn.com/null/root,default,sc.html?prefn1=brand&prefv1=Durango&start=0&sz=60";
+    NSArray *brandLinks = [NSArray arrayWithObjects:danPost,laredo,johnDeere,durango,nil];
+    NSString *URL = @"//*[@class='productlisting']";
+    
+
+    NSURL *websiteLink = [NSURL URLWithString:danPost];
+    NSData *htmlData = [NSData dataWithContentsOfURL:websiteLink];
+    TFHpple *htmlParser = [TFHpple hppleWithHTMLData:htmlData];
+    NSArray *URLNode = [htmlParser searchWithXPathQuery:URL];
+
+    for (TFHppleElement *element in URLNode) {
+        
+        NSArray *aURL = [element children];
+        [pageContent addObjectsFromArray:aURL];
+        NSLog(@"aURL: %@", aURL);
+        
+    }
+
+}
+
+- (IBAction)regExSettings:(id)sender {
+    
+    
+    wc = [[JMGRegexViewWindowController alloc] initWithWindowNibName:@"JMGRegexViewWindowController"];
+	assert(wc);
+	assert(wc.window);
+	[wc.window makeKeyAndOrderFront:self];
+    
+}
+    
+    
+    
+    
+    
+    
+
+
+#pragma mark - Table View
+
+
+
+#pragma mark - Save
+
+    //
+    //  Save the data to the desktop
+    //
+
+/* 
+ 
+- (void) save{
+    
+    NSURL *url = [NSURL URLWithString:@"file:///Users/Moshe/Desktop/shuls2.txt"];
+    
+    NSError *error = nil;
+    
+    NSString * data = [[self shuls] componentsJoinedByString:@"\n"];
+    
+    if(![data writeToURL:url atomically:NO encoding:NSUTF16StringEncoding error:&error]){
+        NSLog(@"Write failed. %@", error);
+    }
+ 
+    
+}
+*/
+
 @end
+

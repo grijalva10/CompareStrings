@@ -7,11 +7,16 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "JMGRegexViewWindowController.h"
 
-@interface JMGAppDelegate : NSObject <NSApplicationDelegate> {
+@interface JMGAppDelegate : NSObject  <NSApplicationDelegate>  {
+    
     NSArray *menuItems;
     NSString *menuItemSelected;
+    JMGRegexViewWindowController *wc;
 }
+
+
     
 
 @property (assign) IBOutlet NSWindow *window;
@@ -27,5 +32,7 @@
 
 - (IBAction)goButton:(NSButton *)sender;
 - (IBAction)parseButton:(NSButton *)sender;
+- (IBAction)getLinks:(NSButton *)sender;
+- (IBAction)regExSettings:(id)sender;
 
 @end

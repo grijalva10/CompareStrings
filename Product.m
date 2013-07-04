@@ -10,7 +10,7 @@
 
 @implementation Product
 
-@synthesize title = _title;
+@synthesize name = _name;
 @synthesize url = _url;
 @synthesize img = _img;
 @synthesize style = _style;
